@@ -1,0 +1,33 @@
+@import "../../../vars";
+
+.reading-chart {
+  height: 52px;
+}
+
+svg {
+  display: block;
+  height: 52px;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.reading-fixation-counts {
+  fill: none;
+  stroke: var(--line-color);
+  stroke-width: 1;
+}
+
+.normal {
+  fill: var(--normal-color);
+}
+
+.interrupt {
+  fill: var(--interrupt-color);
+}
+
+.ignored {
+  fill: var(--ignored-color);
+}

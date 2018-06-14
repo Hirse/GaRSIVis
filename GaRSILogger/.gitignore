@@ -1,0 +1,7 @@
+app/node_modules
+app/pdf.js
+dist
+node_modules
+pdf.js/node_modules
+pdf.js/extensions
+.DS_Store

@@ -1,0 +1,62 @@
+<div class="app mat-typography">
+  <div class="toolbar">
+    <mat-toolbar color="primary">
+      <a mat-icon-button matTooltip="Back" [routerLink]="['/']">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <span class="brand">GaRSIVis</span>
+      <button mat-raised-button (click)="changeCunkSize()">CHUNK SIZE</button>
+    </mat-toolbar>
+    <mat-toolbar>
+      <span class="toolbar-title">Prediction Results</span>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-text">Predicted As</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color normal"></span>
+          <span class="legend-text">Normal Reading</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color interruption"></span>
+          <span class="legend-text">Reading before Interruption</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color incorrect"></span>
+          <span class="legend-text">Incorrect</span>
+        </div>
+      </div>
+    </mat-toolbar>
+  </div>
+  <div class="content">
+    <div class="summary">
+      <mat-card>
+        <mat-spinner *ngIf="!predictionSummaryLoaded" diameter="16" color="accent"></mat-spinner>
+        <ng-container *ngIf="predictionSummaryLoaded">Avg. Accuracy: {{ predictionSummary.accuracy | percent }}</ng-container>
+      </mat-card>
+      <mat-card>
+        <mat-spinner *ngIf="!predictionSummaryLoaded" diameter="16" color="accent"></mat-spinner>
+        <ng-container *ngIf="predictionSummaryLoaded">Avg. Precision: {{ predictionSummary.precision | percent }}</ng-container>
+      </mat-card>
+      <mat-card>
+        <mat-spinner *ngIf="!predictionSummaryLoaded" diameter="16" color="accent"></mat-spinner>
+        <ng-container *ngIf="predictionSummaryLoaded">Avg. Recall: {{ predictionSummary.recall | percent }}</ng-container>
+      </mat-card>
+      <mat-card>
+        <mat-spinner *ngIf="!predictionSummaryLoaded" diameter="16" color="accent"></mat-spinner>
+        <ng-container *ngIf="predictionSummaryLoaded">Chunk Size: {{ predictionSummary.chunk_size }} seconds</ng-container>
+      </mat-card>
+    </div>
+    <mat-accordion class="aligned" multi="true">
+      <mat-expansion-panel *ngFor="let session of sessions; let i = index;">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Reading {{ i + 1 }}</mat-panel-title>
+          <mat-panel-description>
+            <gv-prediction-numbers [sessionName]="session"></gv-prediction-numbers>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <gv-prediction [sessionName]="session"></gv-prediction>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

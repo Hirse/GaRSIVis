@@ -1,0 +1,72 @@
+@import "../../../vars";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  flex-shrink: 0;
+}
+
+.brand,
+.toolbar-title {
+  flex-grow: 1;
+}
+
+.legend {
+  display: flex;
+
+  &-item {
+    align-items: center;
+    display: flex;
+    margin-left: 1rem;
+  }
+
+  &-color {
+    border-radius: 2px;
+    display: inline-block;
+    height: 0.875rem;
+    width: 0.875rem;
+
+    &.normal {
+      background-color: var(--prediction-normal);
+      border: solid 1px var(--prediction-normal-border);
+    }
+
+    &.interruption {
+      background-color: var(--prediction-interrupt);
+      border: solid 1px var(--prediction-interrupt-border);
+    }
+
+    &.incorrect {
+      background-color: var(--prediction-incorrrect);
+      border: solid 1px var(--prediction-incorrrect-border);
+    }
+  }
+
+  &-text {
+    font-size: 0.875rem;
+    margin-left: 0.25rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.summary {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+
+.aligned .mat-expansion-panel-header-title,
+.aligned .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}

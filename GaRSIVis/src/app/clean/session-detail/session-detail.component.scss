@@ -1,0 +1,94 @@
+@import "../../../vars";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  flex-shrink: 0;
+}
+
+.brand,
+.toolbar-title {
+  flex-grow: 1;
+}
+
+.legend {
+  display: flex;
+
+  &-item {
+    align-items: center;
+    display: flex;
+    margin-left: 1rem;
+  }
+
+  &-color {
+    border-radius: 2px;
+    display: inline-block;
+    height: 0.875rem;
+    width: 0.875rem;
+
+    &.normal {
+      background-color: var(--normal-color);
+      border: solid 1px var(--normal-color-border);
+    }
+
+    &.interruption {
+      background-color: var(--interrupt-color);
+      border: solid 1px var(--interrupt-color-border);
+    }
+
+    &.ignored {
+      background-color: var(--ignored-color);
+      border: solid 1px var(--ignored-color-border);
+    }
+  }
+
+  &-text {
+    font-size: 0.875rem;
+    margin-left: 0.25rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.detail-svg {
+  display: block;
+  height: 500px;
+  width: 100%;
+}
+
+.area {
+  clip-path: url(#clip);
+}
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+path {
+  fill: none;
+  stroke: var(--line-color);
+  stroke-width: 1;
+}
+
+.normal {
+  fill: var(--normal-color);
+}
+
+.interrupt {
+  fill: var(--interrupt-color);
+}
+
+.ignored {
+  fill: var(--ignored-color);
+}

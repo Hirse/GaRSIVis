@@ -1,0 +1,11 @@
+<h1 mat-dialog-title class="mat-typography">Chunk Size</h1>
+<div mat-dialog-content class="mat-typography">
+  <p>Chunk Size in Seconds</p>
+  <mat-form-field>
+    <input matInput tabindex="1" type="number" [(ngModel)]="data.chunkSize">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" tabindex="-1">CANCEL</button>
+  <button mat-button [mat-dialog-close]="data.chunkSize" tabindex="2">OK</button>
+</div>

@@ -1,0 +1,18 @@
+@import "vars";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+$gaze-vis-primary: mat-palette($mat-orange, 300);
+$gaze-vis-accent:  mat-palette($mat-blue-grey, 300);
+$gaze-vis-theme: mat-light-theme($gaze-vis-primary, $gaze-vis-accent);
+@include angular-material-theme($gaze-vis-theme);

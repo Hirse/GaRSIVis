@@ -1,0 +1,4 @@
+<div class="reading-chart">
+  <mat-progress-bar *ngIf="!readingLoaded" mode="indeterminate" color="accent"></mat-progress-bar>
+  <svg #svg [ngClass]="{'hidden': !readingLoaded}"></svg>
+</div>

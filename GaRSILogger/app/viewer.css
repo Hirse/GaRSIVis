@@ -1,0 +1,72 @@
+#connectionStatus {
+    bottom: 0;
+    opacity: 1;
+    padding: 0.5rem 0;
+    position: fixed;
+    text-align: center;
+    transition-timing-function: ease-in;
+    transition: background-color 0.4s, color 0.4s, visibility 5s, opacity 3s;
+    visibility: visible;
+    width: 100%;
+    z-index: 10000;
+}
+
+#connectionStatus button {
+    background-color: #d70022;
+    border-radius: 2px;
+    border: none;
+    color: #ffffff;
+    font-size: 90%;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    visibility: hidden;
+}
+
+#connectionStatus button:hover {
+    background-color: #a4000f
+}
+
+#connectionStatus button:active {
+    background-color: #5a0002
+}
+
+#connectionStatus.error {
+    background-color: #ff0039;
+    color: #ffffff
+}
+
+#connectionStatus.error button {
+    visibility: visible;
+}
+
+#connectionStatus.success {
+    background-color: #30e60b;
+    color: #003706;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#connectionStatus.progress {
+    background-color: #ffe900;
+    color: #3e2800;
+}
+
+.dot {
+    border-radius: 50%;
+    display: none;
+    opacity: 0.5;
+    position: absolute;
+}
+
+#gazeDot {
+    box-shadow: 0 0 5px 5px #00feff;
+    height: 1px;
+    width: 1px;
+}
+
+#fixationDot {
+    box-shadow: 0 0 5px 5px #ff1ad9;
+    height: 30px;
+    width: 30px;
+    margin: -30px;
+}

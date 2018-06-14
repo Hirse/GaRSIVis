@@ -1,0 +1,61 @@
+@import "../../../vars";
+
+.chart {
+  position: relative;
+  margin-right: 120px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 10px);
+  justify-content: space-around;
+  position: absolute;
+  right: -120px;
+  top: 10px;
+}
+
+.prediction-svg {
+  display: block;
+  height: 250px;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+path {
+  fill: none;
+}
+
+.divider {
+  fill: #ffffff;
+}
+
+.line {
+  stroke: var(--prediction-line);
+}
+
+.extent {
+  stroke: none;
+  fill: var(--prediction-extent);
+  fill-opacity: 0.4;
+}
+
+.prediction {
+  stroke-width: 240px;
+}
+
+.prediction.normal {
+  stroke: var(--prediction-normal);
+}
+
+.prediction.interruption {
+  stroke: var(--prediction-interrupt);
+}
+
+.prediction.incorrect {
+  stroke: var(--prediction-incorrrect);
+  stroke-width: 5px;
+}

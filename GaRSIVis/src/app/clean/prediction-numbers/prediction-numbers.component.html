@@ -1,0 +1,3 @@
+<ng-container *ngIf="predictionResultLoaded">Accuracy: {{ predictionResult.accuracy | percent }}</ng-container>
+<ng-container *ngIf="predictionResultLoaded">Precision: {{ predictionResult.precision | percent }}</ng-container>
+<ng-container *ngIf="predictionResultLoaded">Recall: {{ predictionResult.recall | percent }}</ng-container>

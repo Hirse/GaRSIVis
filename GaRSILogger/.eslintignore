@@ -1,0 +1,9 @@
+app/node_modules
+app/pdf.js
+dist/
+node_modules/
+pdf.js/build/
+pdf.js/node_modules/
+pdf.js/external/
+pdf.js/src/shared/cffStandardStrings.js
+pdf.js/src/shared/fonts_utils.js

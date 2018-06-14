@@ -1,0 +1,44 @@
+<div>
+  <mat-progress-bar *ngIf="!chunksLoaded || !predictionLoaded" mode="indeterminate" color="accent"></mat-progress-bar>
+  <div class="chart">
+      <svg [ngClass]="{'hidden': !chunksLoaded || !predictionLoaded}" #svg class="prediction-svg">
+        <g>
+          <path class="prediction type normal" />
+          <path class="prediction type interruption" />
+          <path class="prediction incorrect" />
+        </g>
+        <g>
+          <rect class="divider" width="100%" y="50" height="10" />
+          <rect class="divider" width="100%" y="100" height="10" />
+          <rect class="divider" width="100%" y="150" height="10" />
+          <rect class="divider" width="100%" y="200" height="10" />
+        </g>
+        <g class="fixation count" transform="translate(0, 10)">
+          <path class="line" />
+        </g>
+        <g class="fixations duration" transform="translate(0, 60)">
+          <path class="line" />
+          <path class="extent" />
+        </g>
+        <g class="saccades duration" transform="translate(0, 110)">
+          <path class="line" />
+          <path class="extent" />
+        </g>
+        <g class="saccades length" transform="translate(0, 160)">
+          <path class="line" />
+          <path class="extent" />
+        </g>
+        <g class="saccades angle" transform="translate(0, 210)">
+          <path class="line" />
+          <path class="extent" />
+        </g>
+      </svg>
+    <div class="legend" *ngIf="chunksLoaded && predictionLoaded">
+      <div class="legend-entry">Fixation Count</div>
+      <div class="legend-entry">Fixation Duration</div>
+      <div class="legend-entry">Saccade Duration</div>
+      <div class="legend-entry">Saccade Length</div>
+      <div class="legend-entry">Saccade Angle</div>
+    </div>
+  </div>
+</div>

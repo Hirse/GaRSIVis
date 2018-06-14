@@ -1,0 +1,33 @@
+<div class="app mat-typography">
+  <div class="toolbar">
+    <mat-toolbar color="primary">
+      <span class="brand">GaRSIVis</span>
+      <a mat-raised-button [routerLink]="['/predict']">PREDICT</a>
+    </mat-toolbar>
+    <mat-toolbar>
+      <span class="toolbar-title">Fixation Count per Second</span>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-color normal"></span>
+          <span class="legend-text">Normal Reading</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color interruption"></span>
+          <span class="legend-text">Reading before Interruption</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color ignored"></span>
+          <span class="legend-text">Invalid Data</span>
+        </div>
+      </div>
+    </mat-toolbar>
+  </div>
+  <div class="content">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let session of sessions; let i = index;" [routerLink]="['/clean', session]">
+        <span matLine>Reading {{ i + 1 }}</span>
+        <gv-reading matLine [sessionName]="session"></gv-reading>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>

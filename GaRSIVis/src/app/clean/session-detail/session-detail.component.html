@@ -1,0 +1,33 @@
+<div class="app mat-typography">
+  <div class="toolbar">
+    <mat-toolbar color="primary">
+      <a mat-icon-button matTooltip="Back" (click)="onBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <span class="brand">GaRSIVis</span>
+      <button mat-icon-button matTooltip="Remove Selected Area" (click)="saveAnnotations()">
+        <mat-icon>content_cut</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-toolbar>
+      <span class="toolbar-title">Mark Areas as Invalid</span>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-color normal"></span>
+          <span class="legend-text">Normal Reading</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color interruption"></span>
+          <span class="legend-text">Reading before Interruption</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color ignored"></span>
+          <span class="legend-text">Invalid Data</span>
+        </div>
+      </div>
+    </mat-toolbar>
+  </div>
+  <div class="content">
+    <svg #svg class="detail-svg"></svg>
+  </div>
+</div>

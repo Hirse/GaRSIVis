@@ -1,0 +1,64 @@
+body {
+    box-sizing: border-box;
+    color: #0c0c0d;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", "San Francisco", "Ubuntu", sans-serif;
+    height: 450px;
+    justify-content: center;
+    margin: 0;
+    padding: 15px;
+}
+
+.title {
+    font-size: 33px;
+    font-weight: 200;
+    line-height: 1.2;
+    margin: 0 0 30px;
+}
+
+.text {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+.primary-button {
+    align-items: center;
+    background-color: #0060df;
+    border-radius: 2px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    font-size: 15px;
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.primary-button:hover {
+    background-color: #003eaa;
+}
+
+.primary-button:focus {
+    background-color: #003eaa;
+    outline: none;
+}
+
+.primary-button:active {
+    background-color: #002275;
+}
+
+.button-img {
+    margin-right: 8px;
+    height: 25px;
+}
+
+.button-text {
+    text-align: start;
+}
+
+.button-title {
+    display: block;
+    font-weight: bold;
+}

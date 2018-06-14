@@ -1,0 +1,10 @@
+autobahn==17.10.1
+Flask_Cors==3.0.3
+Flask-Cors==3.0.3
+Flask==0.12.2
+humanhash3==0.0.6
+numpy==1.13.3
+pandas==0.21.0
+scikit-learn==0.19.1
+scipy==1.0.0
+Twisted==17.9.0

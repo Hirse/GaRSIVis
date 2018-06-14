@@ -1,0 +1,48 @@
+{
+  "name": "garsilogger",
+  "version": "1.2.0",
+  "description": "Electron pdf reader with eye tracking",
+  "main": "main.js",
+  "scripts": {
+    "buildPDFjs": "./buildPDFjs.sh",
+    "postinstall": "electron-builder install-app-deps && sh buildPDFjs.sh",
+    "start": "electron app",
+    "test": "eslint .",
+    "pack": "electron-builder --dir",
+    "build": "build --mac --win --x64 --ia32",
+    "build:mac": "build --mac",
+    "build:win": "build --win --x64 --ia32",
+    "publish": "build --mac --win --x64 --ia32 -p always",
+    "publish:mac": "build --mac -p always",
+    "publish:win": "build --win --x64 --ia32 -p always"
+  },
+  "repository": "https://github.com/Hirse/GaRSIVis",
+  "author": "Jan Pilzer",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "1.7.9",
+    "electron-builder": "19.42.2",
+    "electron-publisher-s3": "19.45.0",
+    "eslint": "4.10.x"
+  },
+  "build": {
+    "productName": "GaRSILogger",
+    "publish": [{
+      "provider": "s3",
+      "bucket": "garsilogger"
+    }],
+    "fileAssociations": {
+      "ext": "pdf",
+      "role": "Viewer"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "extraResources": "GazeServer/**/*"
+    },
+    "nsis": {
+      "perMachine": true
+    }
+  }
+}
