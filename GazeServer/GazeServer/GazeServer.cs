@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using Tobii.Interaction;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
 namespace GazeServer
 {
-    class GazeServerBehavior : WebSocketBehavior
+  internal class GazeServerBehavior : WebSocketBehavior
     {
         protected override void OnMessage(MessageEventArgs e)
         { }
     }
 
-    class GazeServer
+  internal class GazeServer
     {
         private const string DEFAULT_WEBSOCKET_HOST = "localhost";
         private const string DEFAULT_WEBSOCKET_PORT = "8887";
@@ -20,17 +20,17 @@ namespace GazeServer
         private const string HEAD_PATH = "/head";
         private const string FIXATION_PATH = "/fixation";
 
-        private WebSocketServer server;
+        private WebSocketServer _server;
 
-        public void Start(string url)
+        private void Start(string url)
         {
-            server = new WebSocketServer(url);
-            server.AddWebSocketService<GazeServerBehavior>(GAZE_PATH);
-            server.AddWebSocketService<GazeServerBehavior>(HEAD_PATH);
-            server.AddWebSocketService<GazeServerBehavior>(FIXATION_PATH);
-            server.Start();
+            _server = new WebSocketServer(url);
+            _server.AddWebSocketService<GazeServerBehavior>(GAZE_PATH);
+            _server.AddWebSocketService<GazeServerBehavior>(HEAD_PATH);
+            _server.AddWebSocketService<GazeServerBehavior>(FIXATION_PATH);
+            _server.Start();
 
-            Host host = new Host();
+            var host = new Host();
             host.Streams.CreateGazePointDataStream().GazePoint(OnGaze);
             host.Streams.CreateHeadPoseStream().HeadPose(OnHeadPose);
             host.Streams.CreateFixationDataStream().Begin(OnFixationBegin);
@@ -40,43 +40,43 @@ namespace GazeServer
 
         private void OnGaze(double x, double y, double timestamp)
         {
-            float scale = DPIHelper.GetScreenScale();
-            string coordString = $"{x / scale:0.00},{y / scale:0.00}";
-            server.WebSocketServices[GAZE_PATH].Sessions.Broadcast(coordString);
+            var scale = DPIHelper.GetScreenScale();
+            var coordString = $"{x / scale:0.00},{y / scale:0.00}";
+            _server.WebSocketServices[GAZE_PATH].Sessions.Broadcast(coordString);
         }
 
         private void OnHeadPose(double timestamp, Vector3 position, Vector3 rotation)
         {
-            string coordString = $"{position.X:0.00},{position.Y:0.00},{position.Z:0.00};{rotation.X:0.00},{rotation.Y:0.00},{rotation.Z:0.00}";
-            server.WebSocketServices[HEAD_PATH].Sessions.Broadcast(coordString);
+            var coordString = $"{position.X:0.00},{position.Y:0.00},{position.Z:0.00};{rotation.X:0.00},{rotation.Y:0.00},{rotation.Z:0.00}";
+            _server.WebSocketServices[HEAD_PATH].Sessions.Broadcast(coordString);
         }
 
         private void OnFixationBegin(double x, double y, double timestamp)
         {
-            float scale = DPIHelper.GetScreenScale();
-            string coordString = $"FS: {x / scale:0.00},{y / scale:0.00}";
-            server.WebSocketServices[FIXATION_PATH].Sessions.Broadcast(coordString);
+            var scale = DPIHelper.GetScreenScale();
+            var coordString = $"FS: {x / scale:0.00},{y / scale:0.00}";
+            _server.WebSocketServices[FIXATION_PATH].Sessions.Broadcast(coordString);
         }
     
         private void OnFixationData(double x, double y, double timestamp)
         {
-            float scale = DPIHelper.GetScreenScale();
-            string coordString = $"FD: {x / scale:0.00},{y / scale:0.00}";
-            server.WebSocketServices[FIXATION_PATH].Sessions.Broadcast(coordString);
+            var scale = DPIHelper.GetScreenScale();
+            var coordString = $"FD: {x / scale:0.00},{y / scale:0.00}";
+            _server.WebSocketServices[FIXATION_PATH].Sessions.Broadcast(coordString);
         }
 
         private void OnFixationEnd(double x, double y, double timestamp)
         {
-            float scale = DPIHelper.GetScreenScale();
-            string coordString = $"FE: {x / scale:0.00},{y / scale:0.00}";
-            server.WebSocketServices[FIXATION_PATH].Sessions.Broadcast(coordString);
+            var scale = DPIHelper.GetScreenScale();
+            var coordString = $"FE: {x / scale:0.00},{y / scale:0.00}";
+            _server.WebSocketServices[FIXATION_PATH].Sessions.Broadcast(coordString);
         }
 
         public static void Main(string[] args)
         {
-            string host = DEFAULT_WEBSOCKET_HOST;
-            string port = DEFAULT_WEBSOCKET_PORT;
-            for (int i = 0; i < args.Length; i++)
+            var host = DEFAULT_WEBSOCKET_HOST;
+            var port = DEFAULT_WEBSOCKET_PORT;
+            for (var i = 0; i < args.Length; i++)
             {
                 switch (args[i].Trim().ToUpper())
                 {
@@ -90,7 +90,7 @@ namespace GazeServer
                         break;
                 }
             }
-            string url = String.Empty;
+            var url = string.Empty;
             try
             {
                 url = GetValidUrl(host, port);
@@ -102,14 +102,14 @@ namespace GazeServer
                 Environment.Exit(1);
             }
             Console.WriteLine($"Starting GazeServer at {url}");
-            GazeServer gazeServer = new GazeServer();
+            var gazeServer = new GazeServer();
             gazeServer.Start(url);
             Console.Read();
         }
 
         private static string GetValidUrl(string host, string port)
         {
-            string url = $"ws://{host}:{port}";
+            var url = $"ws://{host}:{port}";
             if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
             {
                 throw new FormatException();

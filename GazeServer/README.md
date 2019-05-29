@@ -2,7 +2,7 @@
 Server Component that sends eye tracking coordinates gathered by a tobii eye-tracker to a WebSocket.
 
 ## Building
-Build the GazeServer using Visual Studio.  
+Restore the NuGet packages and build the GazeServer using Visual Studio.  
 The current configured target is `bin/x86/Debug`.
 
 ## Usage
